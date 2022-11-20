@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 class MainActivity : AppCompatActivity() {
     val TAG: String = "MainActivity"
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -51,6 +52,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
     }
 
     // 로그인 성공/실패 시 다이얼로그를 띄워주는 메소드
@@ -68,9 +71,17 @@ class MainActivity : AppCompatActivity() {
 
         var dialog_listener = object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
+                val alertDialog = (dialog as AlertDialog)
                 when(which){
-                    DialogInterface.BUTTON_POSITIVE ->
+                    DialogInterface.BUTTON_POSITIVE -> {
+                        when(type) {
+                            "success" -> {
+                                startActivity(Intent(this@MainActivity,Home::class.java))
+                            }
+                            else -> { }
+                        }
                         Log.d(TAG, "")
+                    }
                 }
             }
         }
